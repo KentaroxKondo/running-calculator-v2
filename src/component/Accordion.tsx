@@ -26,7 +26,7 @@ const Accordion: React.FC<AccordionProps> = ({ items }) => {
     return (
         <div className="accordion grid gap-y-2">
             {items.map((item, index) => (
-                <div key={index} className='border border-gray-400 shadow-[2px_2px_8px_rgba(0,0,0,0.2)]'>
+                <div key={index} className="border border-gray-400 shadow-[2px_2px_8px_rgba(0,0,0,0.2)]">
                     <h2
                         className="bg-gray-800 hover:bg-gray-700 text-white select-none transition duration-200 ease-in-out"
                         onClick={() => toggleAccordion(index)}
@@ -34,11 +34,13 @@ const Accordion: React.FC<AccordionProps> = ({ items }) => {
                         {item.title}
                     </h2>
 
-                    {openIndexes.includes(index) &&
-                        <div className="py-5 px-[5%] bg-white">
-                            {item.content}
+                    <div className={`accordion-body ${openIndexes.includes(index) ? 'open' : ''}`}>
+                        <div className="overflow-y-hidden">
+                            <div className="py-5 px-[5%] bg-white">
+                                {item.content}
+                            </div>
                         </div>
-                    }
+                    </div>
                 </div>
             ))}
         </div>
