@@ -1,0 +1,7 @@
+@charset "utf-8";
+
+@use './partial/global/variable' as v;
+@use './partial/global/mixin' as m;
+@use './partial/global/base';
+@use './partial/page/top';
+@use './partial/global/helper';

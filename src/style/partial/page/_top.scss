@@ -1,0 +1,146 @@
+@use '../global/variable' as v;
+@use '../global/mixin' as m;
+
+/* ----------------------------------------------------------------------
+トップページのスタイル指定ファイルです。
+---------------------------------------------------------------------- */
+
+h1 {
+    text-shadow:
+        1.5px 1.5px 0px white,
+        3px 3px 5px hsl(0, 0%, 85%);
+}
+
+h2 {
+    height: 2em;
+    display: grid;
+    place-items: center;
+    font-size: 2rem;
+    cursor: pointer;
+    border-block: solid 1px black;
+}
+
+.field-container {
+    display: grid;
+    row-gap: 10px;
+    margin-bottom: 25px;
+    font-size: 1rem;
+
+    @include m.max-width(v.$min-break-point) {
+        row-gap: 0;
+    }
+}
+
+.field {
+    min-height: 3em;
+    display: grid;
+    grid-template-columns: 7em auto;
+    column-gap: 1em;
+    align-items: center;
+
+    @include m.max-width(v.$min-break-point) {
+        grid-template-columns: 1fr;
+        row-gap: 15px;
+        padding-block: 25px;
+
+        &:first-child {
+            padding-top: 0;
+        }
+
+        &:last-child {
+            padding-bottom: 0;
+        }
+
+        &:not(:last-child) {
+            border-bottom: solid 1px black
+        }
+    }
+
+    &__heading {
+        white-space: nowrap;
+        user-select: none;
+        cursor: pointer;
+    }
+
+    &__inputs {
+        display: flex;
+        column-gap: 0.75em;
+
+        @include m.max-width(v.$min-break-point) {
+            justify-content: center;
+            row-gap: 1em;
+        }
+
+        &--distance {
+            justify-content: space-between;
+
+            @include m.max-width(v.$min-break-point) {
+                justify-content: space-evenly;
+
+                >:first-child {
+                    order: 1;
+                }
+            }
+        }
+
+        &--time,
+        &--pace {
+            flex-wrap: wrap;
+        }
+
+        label {
+            display: flex;
+            align-items: center;
+            column-gap: 0.5em;
+            white-space: nowrap;
+            user-select: none;
+            cursor: pointer;
+        }
+    }
+}
+
+input[type='number'] {
+    width: 4em;
+    height: 2.25em;
+    padding-right: 1.5em;
+    border-radius: 5px;
+    text-align: right;
+    box-shadow: 0px 0px 0px 1.5px black;
+
+    @include m.max-width(v.$min-break-point) {
+        width: 3em;
+    }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        opacity: 1; // フォーカスしていなくても表示されるように調整。
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        height: 100%;
+        cursor: pointer;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0px 0px 0px 2px CornflowerBlue;
+    }
+
+    &.large {
+        width: 5.5em;
+    }
+}
+
+.result-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 1em;
+    row-gap: 0.5em;
+
+    @include m.max-width(v.$min-break-point) {
+        min-height: 2.5em; // スマホ時は結果の表示・非表示に伴うレイアウトずれ防止のため、min-heightを指定。
+        justify-content: center;
+    }
+}

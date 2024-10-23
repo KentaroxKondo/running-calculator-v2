@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap');
+
+/* ----------------------------------------------------------------------
+ベーススタイルを適用するためのファイルです。
+---------------------------------------------------------------------- */
+
+body {
+    min-height: 100dvh;
+    font-family: "Kosugi Maru", "Noto Sans JP", sans-serif;
+}
