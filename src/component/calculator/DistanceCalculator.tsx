@@ -78,7 +78,7 @@ const DistanceCalculator: React.FC = () => {
                     firstInputId={'pace-for-distance'}
                 />
                 <ResultField
-                    label='距離'
+                    label="距離"
                     result={distance}
                 />
             </div>

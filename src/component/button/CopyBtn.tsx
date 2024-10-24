@@ -61,7 +61,7 @@ const CopyBtn: React.FC<CopyBtnProps> = ({ textToCopy }) => {
     }, []);
 
     return (
-        <button onClick={copyToClipboard} className={`p-[0.5em] rounded-lg ${copyState.isCopied ? "text-green-500" : "hover:bg-gray-100"}`}>
+        <button onClick={copyToClipboard} className={`js-copyBtn p-[0.5em] rounded-lg ${copyState.isCopied ? "text-green-500" : "hover:bg-gray-100"}`}>
             <FontAwesomeIcon icon={copyState.icon} className="mr-[0.25em]" />
             {copyState.text}
         </button>

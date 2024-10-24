@@ -77,7 +77,7 @@ const TimeCalculator: React.FC = () => {
                     firstInputId={'pace-for-time'}
                 />
                 <ResultField
-                    label='時間'
+                    label="時間"
                     result={time}
                 />
             </div>

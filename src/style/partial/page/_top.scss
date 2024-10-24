@@ -20,6 +20,21 @@ h2 {
     border-block: solid 1px black;
 }
 
+// アコーディオンの開閉アニメーション用スタイル。
+.accordion-body {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition:
+        grid-template-rows 0.2s ease-out,
+        opacity 0.15s ease-out; // アコーディオン展開後、inputのスピンボタンが描画されない挙動を防止するための措置。
+
+    &.open {
+        grid-template-rows: 1fr;
+        opacity: 1;
+    }
+}
+
 .field-container {
     display: grid;
     row-gap: 10px;
@@ -110,6 +125,8 @@ input[type='number'] {
     @include m.max-width(v.$min-break-point) {
         width: 3em;
     }
+
+    -moz-appearance: textfield; // 2024年10月時点、Firefoxのinput[type="number"]のスピンボタンがChromeと異なる見た目になるため、一旦非表示化します。矢印キーによる制御は可能です。
 
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
