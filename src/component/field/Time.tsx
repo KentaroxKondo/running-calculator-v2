@@ -16,7 +16,7 @@ const TimeField = ({ time, handleChange, firstInputId }: TimeFieldProps) => {
         <div className="field">
             <label htmlFor={firstInputId} className="field__heading">時間は・・・</label>
 
-            <div className='field__inputs field__inputs--time'>
+            <div className="field__inputs field__inputs--time">
                 <label>
                     <input type="number" id={firstInputId} maxLength={2} max="99" min="0" placeholder="0" value={time.h} data-category="time" data-unit="h" onFocus={handleFocus} onChange={handleChange} onKeyDown={handleKeyDown} />
                     <span>時間</span>

@@ -16,7 +16,7 @@ const PaceField = ({ pace, handleChange, firstInputId }: PaceFieldProps) => {
         <div className="field">
             <label htmlFor={firstInputId} className="field__heading">ペースは・・・</label>
 
-            <div className='field__inputs field__inputs--pace'>
+            <div className="field__inputs field__inputs--pace">
                 <label>
                     <input type="number" id={firstInputId} maxLength={2} max="59" min="0" placeholder="0" value={pace.m} data-category="pace" data-unit="m" onFocus={handleFocus} onChange={handleChange} onKeyDown={handleKeyDown} />
                     <span>分</span>
