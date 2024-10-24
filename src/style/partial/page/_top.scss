@@ -126,6 +126,8 @@ input[type='number'] {
         width: 3em;
     }
 
+    -moz-appearance: textfield; // 2024年10月時点、Firefoxのinput[type="number"]のスピンボタンがChromeと異なる見た目になるため、一旦非表示化します。矢印キーによる制御は可能です。
+
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
         opacity: 1; // フォーカスしていなくても表示されるように調整。
