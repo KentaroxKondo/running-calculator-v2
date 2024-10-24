@@ -47,27 +47,30 @@ export const formatTime = (unit: 'h' | 'm' | 's', valueToSet: number, prevState:
     return { ...newTime, ...updatedObject };
 };
 
+// inputのFocus時の挙動を制御する関数。
 export const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
     e.target.select(); // キーボード入力高速化のため、inputフォーカス時に値を全選択状態にする（打ち消しと入力を一度に行えるため）。
 }
 
+// inputのKeyDown時の挙動を制御する関数
 export const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const charCode = e.key;
+    console.log('charCode: ', charCode);
 
-    // 数字、Backspace、Tab、Arrowキー、Command/Ctrl+Aを許可
-    if (
-        !/[0-9]/.test(charCode) && // 数字以外のキー
-        charCode !== 'Backspace' && // バックスペース
-        charCode !== 'Tab' && // タブ
-        charCode !== 'ArrowUp' && // 上矢印
-        charCode !== 'ArrowDown' && // 下矢印
-        charCode !== 'ArrowLeft' && // 左矢印
-        charCode !== 'ArrowRight' && // 右矢印
-        !(e.ctrlKey || e.metaKey) // CtrlまたはCmdが押されている場合
-    ) {
-        e.preventDefault(); // デフォルトの動作をキャンセル
-        console.log("入力キャンセル！");
-    }
+    // 入力を許可するキーのリスト。
+    const allowedKeys = [
+        'Backspace', // 文字列削除のため。
+        'Tab', // フォーカス移動のため。
+        'ArrowUp', // インクリメント操作のため。
+        'ArrowDown', // デクリメント操作のため。
+        'ArrowLeft', // 文字列内の移動のため。
+        'ArrowRight' // 文字列内の移動のため。
+    ];
+
+    // 許可リストのキーや、数字、Ctrl/Cmdが押下されているかをチェック。
+    const isAllowedKey = allowedKeys.includes(charCode) || /^[0-9]$/.test(charCode) || (e.ctrlKey || e.metaKey);
+
+    if (!isAllowedKey) e.preventDefault();
 };
 
 // inputのKeyUp時の挙動を制御する関数。
