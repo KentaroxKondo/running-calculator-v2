@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏃‍♂️ ランニング・カリキュレーター
 
-## Getting Started
 
-First, run the development server:
+## 目次 <!-- omit in toc -->
+- [概要](#概要)
+- [使用技術](#使用技術)
+- [作成した動機](#作成した動機)
+- [意識したポイント](#意識したポイント)
+- [開発の結果](#開発の結果)
+- [感想](#感想)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 概要
+- **「距離」**・**「時間」**・**「ペース」** のいずれか2項目を入力することで、残りの値を自動的に計算するシンプルなブラウザアプリです。
+- GitHubと連携させ、Webホスティングサービス「Vercel」にて自動ビルド・公開中です。  
+🔗 [ランニング・カリキュレーターを使ってみる](https://running-calculator-sable.vercel.app/)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+![実際にランニング・カリキュレーターを操作するGIF画像](https://i.imgur.com/XEBoFUJ.gif)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## 使用技術
+- **機能実装**：[React](https://react.dev/)、[Next.js](https://nextjs.org/)、[TypeScript](https://www.typescriptlang.org/)  
+- **スタイリング**：[TailwindCSS](https://tailwindcss.com/)、SASS  
+- **デプロイ**：[Vercel](https://vercel.com/)
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 作成した動機
+以前私は、コールセンターでとあるランニング計測アプリのテクニカルサポート業務を行なっていました。
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+そこでお客様から頻繁に頂戴した問い合わせのひとつに、 **「ランニング記録の保存に失敗した」** という内容があります。
 
-## Deploy on Vercel
+中には **10件以上の失敗** をまとめて報告される方もおられ、オペレーターは可能な範囲で走行時間や距離、ペース、日時といったヒントを聴取し手動で計算の上、お客様アカウントに反映させるタスクをこなしていました。
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**正確な計算** と **迅速な対応・後処理** が求められることもあり、オペレーターは負担を感じていましたが、当時は業務に適したツールがなかったため、皆苦労していました。平均処理時間（AHT）が延伸し、パフォーマンス悪化にも繋がっていました。
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+そこで思いついたのが、 **ランニング・カリキュレーター** の開発です。早速HTMLとCSS、JavaScriptを独学して、自身の初となる、業務に最適な仕様のプログラムを完成させることができました。
+
+※本プロジェクトは、[旧ランニング・カリキュレーター](https://github.com/KentaroxKondo/running-calculator)を新技術習得のために再構築した改良版となります。
+
+
+## 意識したポイント
+- **✅徹底的に無駄がないUI**：ヘルプデスクの電話対応には時間の節約が求められます。迷わず最短手順で欲しい結果を取得できるように、シンプルに設計しました。
+- **✅自動フォーカス移動**：キーボードで各値を最大桁数まで入力後、自動で次の項目へフォーカスを移動してくれます。結果が確定すればCopyボタンへ、未確定なら必須フィールドへフォーカス先も変わります。フォーカス後は値を「全選択」状態にするため、Backspaceをわざわざ使用せずとも値を上書きできます。
+- **✅分・秒の繰り上げ**：例えば「70秒」と入力された場合、自動的に60秒を繰り上げて「1分10秒」に変換するように処理しています。マウスを使ったインクリメント・デクリメント操作にも対応しました（Chrome推奨）。
+- **✅「Copy」ボタンの実装**：別の業務ツールに値を貼り付ける手間を考慮し、ワンクリックで値をコピーできる機能を追加しました。
+- **✅コピー確認のアニメーション**：「コピー済み」と目立つアニメーションで表示することで、コピーに失敗し過去の値をペーストするミスを未然に防ぎました。
+- **✅「マラソン」ボタンの実装**：お客様の中には、走行距離を数字ではなく、「マラソン」や「ハーフマラソン」と表現される方が多いため、 ワンクリック入力に対応しました。
+- **✅「Clear」ボタンの実装**：複数回の計算に備えて、値の一括削除ボタンを作りました。
+- **✅レスポンシブ対応**：業務ではPCを使いますが、スマホでも崩壊しないデザインに調整しました。
+
+
+## 開発の結果
+非常にシンプルながら、業務に最適な機能性を備えていたため、職場で活用していただきました。同僚やお客様のQOL向上のため、少しはお役に立てたかと思います🙌
+
+
+## 感想
+プログラミングを学ぶだけではなく、仕事にも役立ったので、コスパの良いアイデアだったと思います。
+
+改めて生活を豊かにしてくれる、 **プログラミングの可能性** を感じ、更なる学習意欲が湧きました！道のりは長いですが、学習を継続し、より便利な価値を生み出すプロに成長したいです。目標は、フルスタックエンジニア！
