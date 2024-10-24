@@ -55,7 +55,6 @@ export const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
 // inputのKeyDown時の挙動を制御する関数
 export const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     const charCode = e.key;
-    console.log('charCode: ', charCode);
 
     // 入力を許可するキーのリスト。
     const allowedKeys = [
