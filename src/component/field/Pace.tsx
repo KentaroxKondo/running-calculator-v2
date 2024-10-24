@@ -3,7 +3,7 @@ import React from 'react'
 
 // 定義。
 import { TimeObj } from '../../util/types' // 型を取得。
-import { handleFocus, handleKeyDown } from '../../util/functions'; // 関数を取得。
+import { handleFocus, handleKeyDown, handleKeyUp } from '../../util/functions'; // 関数を取得。
 
 type PaceFieldProps = {
     pace: TimeObj;
@@ -18,11 +18,11 @@ const PaceField = ({ pace, handleChange, firstInputId }: PaceFieldProps) => {
 
             <div className="field__inputs field__inputs--pace">
                 <label>
-                    <input type="number" id={firstInputId} maxLength={2} max="59" min="0" placeholder="0" value={pace.m} data-category="pace" data-unit="m" onFocus={handleFocus} onChange={handleChange} onKeyDown={handleKeyDown} />
+                    <input type="number" id={firstInputId} maxLength={2} max="59" min="0" placeholder="0" value={pace.m} data-category="pace" data-unit="m" onFocus={handleFocus} onChange={handleChange} onKeyDown={handleKeyDown} onKeyUp={handleKeyUp} />
                     <span>分</span>
                 </label>
                 <label>
-                    <input type="number" maxLength={2} max="60" min="-1" placeholder="0" value={pace.s} data-category="pace" data-unit="s" onFocus={handleFocus} onChange={handleChange} onKeyDown={handleKeyDown} />
+                    <input type="number" maxLength={2} max="60" min="-1" placeholder="0" value={pace.s} data-category="pace" data-unit="s" onFocus={handleFocus} onChange={handleChange} onKeyDown={handleKeyDown} onKeyUp={handleKeyUp} />
                     <span>秒 / KM</span>
                 </label>
             </div>

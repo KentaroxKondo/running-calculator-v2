@@ -69,3 +69,23 @@ export const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         console.log("入力キャンセル！");
     }
 };
+
+// inputのKeyUp時の挙動を制御する関数。
+export const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const target = e.target as HTMLInputElement;
+    const currentAccordion = target.closest('.accordion-body') as HTMLElement;
+    const relevantInputs = Array.from(currentAccordion.querySelectorAll('input'));
+    const currentLength = target.value.length;
+    const maxLength = Number(target.getAttribute('maxlength')); // inputに定義された、最大入力桁数を取得。
+
+    // 最大桁数までキー入力した後に、フォーカスを自動遷移。
+    if (
+        currentLength >= maxLength &&
+        /^\d$/.test(e.key) && // 数字が押下されていることを確認。
+        !['Backspace', 'Shift', 'Tab'].includes(e.key) // 特定のキー押下は除外。
+    ) {
+        const nextInput = relevantInputs[relevantInputs.indexOf(target) + 1] || currentAccordion.querySelector('.js-copyBtn'); // 次のinput要素、若しくはコピーボタンを取得。
+
+        (nextInput || relevantInputs[0]).focus(); // nextInputがなければ、関係するinputの冒頭にフォーカス移動。
+    }
+};
