@@ -18,15 +18,15 @@ const TimeField = ({ time, handleChange, firstInputId }: TimeFieldProps) => {
 
             <div className="field__inputs field__inputs--time">
                 <label>
-                    <input type="number" id={firstInputId} maxLength={2} max="99" min="0" placeholder="0" value={time.h} data-category="time" data-unit="h" onFocus={handleFocus} onChange={handleChange} onKeyDown={handleKeyDown} onKeyUp={handleKeyUp} />
+                    <input type="number" inputMode="numeric" id={firstInputId} maxLength={2} max="99" min="0" placeholder="0" value={time.h} data-category="time" data-unit="h" onFocus={handleFocus} onChange={handleChange} onKeyDown={handleKeyDown} onKeyUp={handleKeyUp} />
                     <span>時間</span>
                 </label>
                 <label>
-                    <input type="number" maxLength={2} max="60" min="-1" placeholder="0" value={time.m} data-category="time" data-unit="m" onFocus={handleFocus} onChange={handleChange} onKeyDown={handleKeyDown} onKeyUp={handleKeyUp} />
+                    <input type="number" inputMode="numeric" maxLength={2} max="60" min="-1" placeholder="0" value={time.m} data-category="time" data-unit="m" onFocus={handleFocus} onChange={handleChange} onKeyDown={handleKeyDown} onKeyUp={handleKeyUp} />
                     <span>分</span>
                 </label>
                 <label>
-                    <input type="number" maxLength={2} max="60" min="-1" placeholder="0" value={time.s} data-category="time" data-unit="s" onFocus={handleFocus} onChange={handleChange} onKeyDown={handleKeyDown} onKeyUp={handleKeyUp} />
+                    <input type="number" inputMode="numeric" maxLength={2} max="60" min="-1" placeholder="0" value={time.s} data-category="time" data-unit="s" onFocus={handleFocus} onChange={handleChange} onKeyDown={handleKeyDown} onKeyUp={handleKeyUp} />
                     <span>秒</span>
                 </label>
             </div>
