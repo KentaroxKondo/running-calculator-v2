@@ -22,7 +22,7 @@ const DistanceField = ({ distance, handleChange, setDistance, firstInputId }: Di
 
             <div className="field__inputs field__inputs--distance">
                 <label>
-                    <input type="number" id={firstInputId} maxLength={6} max="9999.9" min="0" step={0.1} placeholder="0" value={distance} data-category="distance" onFocus={handleFocus} onChange={handleChange} onKeyDown={handleKeyDown} onKeyUp={handleKeyUp} className="large" />
+                    <input type="number" id={firstInputId} maxLength={6} max="9999.9" min="0" step={0.1} placeholder="0" value={distance} data-category="distance" onFocus={handleFocus} onChange={handleChange} onKeyDown={(e) => handleKeyDown(e, { allowDecimal: true })} onKeyUp={handleKeyUp} className="large" />
                     <span>KM</span>
                 </label>
 
