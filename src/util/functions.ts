@@ -53,7 +53,7 @@ export const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
 }
 
 // inputのKeyDown時の挙動を制御する関数
-export const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+export const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, options: { allowDecimal?: boolean } = {}) => {
     const charCode = e.key;
 
     // 入力を許可するキーのリスト。
@@ -65,6 +65,8 @@ export const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         'ArrowLeft', // 文字列内の移動のため。
         'ArrowRight' // 文字列内の移動のため。
     ];
+
+    if (options.allowDecimal) allowedKeys.push('.'); // 小数点入力のため。
 
     // 許可リストのキーや、数字、Ctrl/Cmdが押下されているかをチェック。
     const isAllowedKey = allowedKeys.includes(charCode) || /^[0-9]$/.test(charCode) || (e.ctrlKey || e.metaKey);
