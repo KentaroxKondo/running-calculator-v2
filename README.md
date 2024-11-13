@@ -20,7 +20,7 @@
 
 ## 使用技術
 - **機能実装**：[React](https://react.dev/)、[Next.js](https://nextjs.org/)、[TypeScript](https://www.typescriptlang.org/)  
-- **スタイリング**：[TailwindCSS](https://tailwindcss.com/)、SASS  
+- **スタイリング**：[Tailwind CSS](https://tailwindcss.com/)、SASS  
 - **デプロイ**：[Vercel](https://vercel.com/)
 
 
